@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pyramid Generator</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script>
+    const character = "#";
+    const count = 8;
+    const rows = [];
+    let inverted = false;
+
+    function createRow(i, n) {
+      return (
+        " ".repeat(n - i) + character.repeat(2 * i - 1) + " ".repeat(n - i)
+      );
+    }
+    for (let i = 1; i <= count; i++) {
+      if (inverted) {
+        rows.unshift(createRow(i, count));
+      } else {
+        rows.push(createRow(i, count));
+      }
+    }
+
+    let result = "";
+
+    for (const row of rows) {
+      result = result + "\n" + row;
+    }
+
+    console.log(result);
+  </script>
+</html>
